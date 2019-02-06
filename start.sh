@@ -28,21 +28,3 @@ docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/h
 # Join peer0.org2.example.com to the channel.
 docker exec -e "CORE_PEER_LOCALMSPID=Org2MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org2.rgbproject.com/msp" peer0.org2.rgbproject.com peer channel fetch 0 channelrc.block -o orderer.rgbproject.com:7050 -c channelrc
 docker exec -e "CORE_PEER_LOCALMSPID=Org2MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org2.rgbproject.com/msp" peer0.org2.rgbproject.com peer channel join -b channelrc.block
-
-# docker exec -it cli bash
-
-# peer channel create -o orderer.rgbproject.com:7050 -c channelrc -f ./config/channel.tx --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/rgbproject.com/orderers/orderer.rgbproject.com/msp/tlscacerts/tlsca.rgbproject.com-cert.pem
-
-## peer0.org1
-# CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.rgbproject.com/users/Admin@org1.rgbproject.com/msp
-# CORE_PEER_ADDRESS=peer0.org1.rgbproject.com:7051
-# CORE_PEER_LOCALMSPID="Org1MSP"
-# CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.rgbproject.com/peers/peer0.org1.rgbproject.com/tls/ca.crt
-# peer channel join -b channelrc.block
-
-## peer0.org2
-# CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.rgbproject.com/users/Admin@org2.rgbproject.com/msp
-# CORE_PEER_ADDRESS=peer0.org2.rgbproject.com:7051
-# CORE_PEER_LOCALMSPID="Org2MSP"
-# CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.rgbproject.com/peers/peer0.org2.rgbproject.com/tls/ca.crt
-# peer channel join -b channelrc.block
